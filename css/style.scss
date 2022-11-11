@@ -1,0 +1,194 @@
+$primary-color:#ffe92e;
+$secondary-color:black;
+$terciary-color:white;
+$font-color:#aaa;
+
+$box-Shadow:0 2px 10px rgba(0,0,0,0.6);
+$limit:10;
+$unit:8px;
+@function size($value){
+    @return $value * $unit
+}
+
+@mixin border($color) {
+    border: 1px $color solid;
+}
+
+@mixin tamaño($widht, $height) {
+    width: $widht;
+    height: $height;    
+}
+%caja{
+    @include tamaño(80%, 100%);
+    border-radius: size(4) ;
+    background-color: $terciary-color;
+
+}
+%around{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around; 
+}
+%around-center{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+%between{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+%between-center{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    background-color: $primary-color;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 5vh;
+    margin-left: 10%;
+    
+}
+
+h2{
+font-weight: bolder;
+font-size: size(6);
+}
+h3{
+    font-weight: lighter;
+font-size: size(3);
+}
+.container{
+    background-color: white;
+    @include tamaño(180vh,90vh );
+    padding: 50px;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
+    background-image: url("../images/bg.png");
+    background-size: 100% 100%;
+    border-radius: 3vh;
+    header{
+        @extend %between;
+        @include tamaño(100%,10vh);
+        nav{
+            
+            @include tamaño(60%,50%);
+
+            ul{
+                @extend %around;
+                @include tamaño(100%,100%); 
+            li{         
+                @include tamaño(100%,100%); 
+                list-style: none;
+                a{
+                    @extend %caja;
+                    @extend %around-center;
+                    white-space: nowrap;
+                    text-decoration: none;
+                    color: $font-color;
+                   
+                   
+                }
+                .hover{
+                    
+                    @include tamaño(100%,100%);
+                    background-color: $primary-color;
+                    color: black;
+                }
+                a:hover{
+                    color: black;
+                    background-color:  $primary-color;
+                  }
+               
+            }
+            }
+      
+          }
+
+    }
+    main{
+        
+        @include tamaño(100%,  95%);
+        display: flex;
+        .texto{
+            
+            padding: 10px;
+            @include tamaño(30%,80%);
+            margin-left: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+
+            .texto-centro{
+                
+                @include tamaño(100%,90%);
+                @extend    %between ;
+                flex-direction: column;
+                .column{
+                    @include tamaño(30%,100%);
+                    
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    margin-left: 20%;
+                    
+                }
+                .div-row{
+                    @include tamaño(100%,15% );
+                    @extend %between;
+                    
+                    
+                    .hover{
+                    
+                        @include tamaño(50%,100%);
+                        background-color: $primary-color;
+                        color: black;
+                    }
+                    .ordenar{
+                        
+                    @extend %around-center;
+                    
+                    @extend %caja;
+                    a{
+                        text-decoration: none;
+                    }
+
+                    }
+                    
+                }
+                .price-before{
+                    font-size: x-small;
+                }
+                .price-after{
+                    font-size: size(4);
+                    
+                } 
+                
+                    
+                  
+            }
+
+        }
+      
+        
+        .imagen{
+            @include tamaño(40%,80% );
+            margin-left: 8%;
+            img{
+                @include tamaño(100%,100% )
+            }
+            
+           
+        }
+    }
+    
+
+}
